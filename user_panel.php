@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalafe Weblog System</title>
-    <link rel="stylesheet" href="/statics/style.css">
-    <script src="/statics/functions.js"></script>
-</head>
 <?php
-$is_logged = $_COOKIE['is_logged'];
-$user_id = $_COOKIE['user_id'];
-if($is_logged == 'true' and !is_null($user_id)){
+session_start();
+include 'header.php';
+if(isset($_SESSION['is_logged']) === true){
 ?>
 
 <body>
@@ -21,7 +11,7 @@ if($is_logged == 'true' and !is_null($user_id)){
             <li><a href="#about">Write</a></li>
             <li><a href="#services">My Posts</a></li>
             <li><a href="#contact">Settings</a></li>
-            <li><a href="#contact" onclick="deleteAllCookies();redirect('/login.php');">Logout </a>(<?php echo $_COOKIE['username'] ?>)</li>
+            <li><a href="#contact" onclick="deleteAllCookies();redirect('/login.php');">Logout </a>(<?php echo $_SESSION['username'] ?>)</li>
         </ul>
     </nav>
 
