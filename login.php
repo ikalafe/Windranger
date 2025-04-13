@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalafe Weblog System</title>
-    <link rel="stylesheet" href="/statics/style.css">
-</head>
-
-<body>
-    <h1>Login</h1>
-
 <?php
+session_start();
+$message = null;
+include 'header.php';
+echo "<h1>Login</h1>";
 include 'db.php';
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $username = $_POST["username"];
@@ -23,33 +15,33 @@ include 'db.php';
 
         if($result && mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-            setcookie("is_logged", "true", time() + (7 * 24 * 60 * 60), "/");
-            setcookie("username", $row['username'], time() + (7 * 24 * 60 * 60), "/");
-            setcookie("user_id", $row['user_id'], time() + (7 * 24 * 60 * 60), "/");
+            $_SESSION['is_logged'] = true;
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['user_id'] = $row['user_id'];
             header("Location: user_panel.php");
         } else {
-            $error_message = "Invalid username or password. Please try again.";
-
+            $message = "Invalid username or password.<br> Please try again, if you can not remember <a href='forget_password.php?username=$username'>Click here</a>";
+            $username = $_POST["username"];
         }
     } 
 ?>
 
-<form action="" method="post">
+<form action="login.php" method="post">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
 
     <label for="password"">Password:</label>
     <input type="password" id="password" name="password" required><br><br>
         
-    <input type="submit" value="Login">
+    <input type="submit" value="Login"><br>
+    <a href="register.php">Need a registeration?</a><br>
 </form>
 <?php
-if(!is_null($error_message)){
-    echo "<p>$error_message</p>";
+if(array_key_exists('msg', $_GET)){
+    $message = $_GET['msg'];
 }
+if(isset($message)){
+    echo "<p>$message</p>";
+}
+include 'footer.php';
 ?>
-</body>
-<footer>
-    <p>&copy; 2025 Kalafe Weblog System. All rights reserved.</p>
-</footer>
-</html>
