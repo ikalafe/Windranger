@@ -10,8 +10,8 @@ if(isset($_SESSION['is_logged']) === true){
             <li><a href="#home">Panel</a></li>
             <li><a href="#about">Write</a></li>
             <li><a href="#services">My Posts</a></li>
-            <li><a href="#contact">Settings</a></li>
-            <li><a href="#contact" onclick="deleteAllCookies();redirect('/login.php');">Logout </a>(<?php echo $_SESSION['username'] ?>)</li>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="logout.php">Logout </a>(<?php echo $_SESSION['username'] ?>)</li>
         </ul>
     </nav>
 
