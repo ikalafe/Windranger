@@ -7,7 +7,7 @@ if(isset($_SESSION['is_logged']) === true){
 <body>
     <nav>
         <ul>
-            <li><a href="#home">Panel</a></li>
+            <li><a href="user_panel.php">Panel</a></li>
             <li><a href="#about">Write</a></li>
             <li><a href="#services">My Posts</a></li>
             <li><a href="settings.php">Settings</a></li>
