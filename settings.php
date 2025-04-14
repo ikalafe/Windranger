@@ -47,7 +47,7 @@ if(isset($_SESSION['is_logged']) === true){
 <body>
     <nav>
         <ul>
-            <li><a href="#home">Panel</a></li>
+            <li><a href="user_panel.php">Panel</a></li>
             <li><a href="#about">Write</a></li>
             <li><a href="#services">My Posts</a></li>
             <li><a href="settings.php">Settings</a></li>
@@ -62,11 +62,10 @@ if(isset($_SESSION['is_logged']) === true){
                 <p>This is a simple and smooth template for your website. Customize it to fit your needs!</p>
             </section>
 
-            <img src="<?= '/statics/images/' . md5($_SESSION['user_id']) . '.jpg'; ?>" onerror="this.src='/statics/images/image_profile.jpg'"><img>
+            <img src="<?= '/get_image.php?imagesrc=statics/images/' . md5($_SESSION['user_id']) . '.png'; ?>" onerror="this.src='/statics/images/image_profile.jpg'" width="200" height="200"><img><br>
 
             <input type="file" id="imageUpload" accept="image/*">
             <progress id="uploadProgress" max="100" value="0"></progress>
-            <button id="uploadButton">Upload</button>
             <div id="message"></div>
             <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
             <script src="/statics/upload.js"></script>
