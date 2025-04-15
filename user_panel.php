@@ -5,11 +5,11 @@ if(isset($_SESSION['is_logged']) === true){
 ?>
 
 <body>
-    <nav>
+<nav>
         <ul>
             <li><a href="user_panel.php">Panel</a></li>
-            <li><a href="#about">Write</a></li>
-            <li><a href="#services">My Posts</a></li>
+            <li><a href="write_post.php">Write</a></li>
+            <li><a href="my_posts.php">Posts</a></li>
             <li><a href="settings.php">Settings</a></li>
             <li><a href="logout.php">Logout </a>(<?php echo $_SESSION['username'] ?>)</li>
         </ul>
