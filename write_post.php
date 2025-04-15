@@ -10,13 +10,13 @@ if(isset($_SESSION['is_logged']) === true){
             $author_id = $_SESSION['user_id'];
             $category_id = $_POST['category'];
 
-            try {
-                $sql = "INSERT INTO `posts` (`title`, `content`, `author_id`, `category_id`) VALUE ('$title', '$content', '$author_id', '$category_id')";
-                $result = mysqli_query($conn, $sql);
-                
-                if($result === true) {
-                    header("Location: my_posts.php?msg=Your post is published successfully🎉");
-                }
+        try {
+            $sql = "INSERT INTO `posts` (`title`, `content`, `author_id`, `category_id`) VALUE ('$title', '$content', '$author_id', '$category_id')";
+            $result = mysqli_query($conn, $sql);
+            
+            if($result === true) {
+                header("Location: my_posts.php?msg=Your post has been published successfully🎉");
+            }
         } catch (mysqli_sql_exception $e) {
             $message = $e->getMessage();
             print($message);
